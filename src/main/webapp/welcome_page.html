@@ -71,6 +71,37 @@
         margin-bottom: 20px; /* Space between image and heading */
 		
     }
+    /* Services Section Styles */
+    .services-content {
+        display: flex; /* Make content flexbox */
+        justify-content: space-around; /* Evenly space items */
+        align-items: center; /* Center items vertically */
+        flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        padding: 20px; /* Add padding */
+    }
+    .services-content div {
+        width: 45%; /* Set width for each div */
+        margin: 10px; /* Add margin */
+        padding: 20px; /* Add padding */
+        background-color: white; /* White background */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    }
+    .services-content div h3 {
+        margin-bottom: 10px; /* Margin below heading */
+    }
+    .services-content div p {
+        margin-bottom: 0; /* Remove margin below paragraphs */
+    }
+    .services-content div ul {
+        margin-top: 10px; /* Add margin above list */
+        margin-bottom: 0; /* Remove default margin */
+        padding-left: 0; /* Remove default padding for the list */
+        list-style-position: inside; /* Place bullet inside the content */
+    }
+    .services-content div ul li {
+        padding-left: 0; /* Remove default padding for list items */
+    }
 
     /* Media query for smaller screens */
     @media (max-width: 768px) {
@@ -79,6 +110,9 @@
         }
         .home-content {
             padding: 10px; /* Adjusted padding for smaller screens */
+        }
+        .services-content div {
+            width: 100%; /* Full width on smaller screens */
         }
     }
 
@@ -165,6 +199,17 @@
         margin: 20px 0; /* Adjust spacing between images */
       }
     }
+	
+	.linklink{
+		  text-align: left;
+		 
+	}
+	.inner{
+		margin-left: 20px;
+	}
+	.head{
+		margin-top: 8px;
+	}
 </style>
 </head>
 <body>
@@ -213,8 +258,32 @@
 
 <div id="services" class="section services">
   <div class="container">
-    <h2>Services Section</h2>
-    <p class="lead">This is the Services section.</p>
+    <h2 class="head">OUR SERVICES</h2>
+    <div class="services-content">
+      <div>
+        <h3>WHAT WE PROVIDE:</h3>
+        
+        <ul class="linklink">
+          <li>fertile eggs</li>
+          <li>table eggs</li>
+          <li>chicken feed</li>
+          <li>crops
+            <ul>
+              <li class="inner">maize</li>
+			  <li class="inner">spinach</li>
+              <li class="inner">tomatoes</li>
+            </ul>
+			
+          </li>
+		  <li>7 days old chicks</li>
+		  <li>5-6 weeks broiler chickens</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Service 2</h3>
+        <p>....</p>
+      </div>
+    </div>
   </div>
 </div>
 
