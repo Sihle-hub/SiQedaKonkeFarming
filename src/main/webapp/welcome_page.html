@@ -69,6 +69,7 @@
         height: auto; /* Maintain aspect ratio */
         max-height: 300px; /* Limit max height */
         margin-bottom: 20px; /* Space between image and heading */
+		
     }
 
     /* Media query for smaller screens */
@@ -88,49 +89,82 @@
     }
 
     /* Footer styles */
-	footer {
-	  background-color: #333;
-	  color: white;
-	  text-align: center;
-	  padding: 20px 0;
-	}
-	
-	footer h4 {
-	  margin-bottom: 20px;
-	}
-	
-	footer ul {
-	  padding-left: 0;
-	  list-style: none;
-	}
-	
-	footer ul li {
-	  margin-bottom: 10px;
-	}
-	
-	footer ul li strong {
-	  display: inline-block;
-	  width: 100px; /* Adjust width as needed */
-	}
-	
-	footer ul li a {
-	  color: white;
-	  text-decoration: none;
-	}
-	
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    
+    footer h4 {
+      margin-bottom: 20px;
+    }
+    
+    footer ul {
+      padding-left: 0;
+      list-style: none;
+    }
+    
+    footer ul li {
+      margin-bottom: 10px;
+    }
+    
+    footer ul li strong {
+      display: inline-block;
+      width: 100px; /* Adjust width as needed */
+    }
+    
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    /* Center links and space them */
+    @media (min-width: 768px) {
+      footer ul li {
+        display: inline-block;
+        margin-right: 20px; /* Adjust spacing between links */
+      }
+    }
 
-	
+    /* Founders section */
+    .founders {
+      background-color: #f0f0f0; /* Light gray background */
+      padding: 40px 0;
+    }
 
-	/* Center links and space them */
-	@media (min-width: 768px) {
-	  footer ul li {
-	    display: inline-block;
-	    margin-right: 20px; /* Adjust spacing between links */
-	  }
-	}
+    .founders-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
+    .founders-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap; /* Ensure images wrap to new line on smaller screens */
+    }
 
+    .founders-images img {
+      max-width: 100%; /* Ensure images are responsive */
+      height: auto;
+      max-height: 300px; /* Limit max height */
+      margin: 0 20px; /* Adjust spacing between images */
+      margin-bottom: 20px; /* Space between images on small screens */
+	  border-radius: 10px;
+	 
+    }
 
+    @media (max-width: 768px) {
+      .founders-images {
+        flex-direction: column; /* Stack images vertically on smaller screens */
+        align-items: center; /* Center align images */
+      }
+
+      .founders-images img {
+        margin: 20px 0; /* Adjust spacing between images */
+      }
+    }
 </style>
 </head>
 <body>
@@ -151,7 +185,7 @@
           <a class="nav-link" href="#services">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
+          <a class="nav-link" href="#contact">Order</a>
         </li>
       </ul>
     </div>
@@ -184,10 +218,30 @@
   </div>
 </div>
 
+<!-- Advertising Section -->
+<div id="advertising" class="section">
+  <div class="container">
+    <h2>Advertising Section</h2>
+    <p class="lead">This is the Advertising section. You can place your advertising content or products here.</p>
+  </div>
+</div>
+
 <div id="contact" class="section contact">
   <div class="container">
-    <h2>Contact Section</h2>
-    <p class="lead">This is the Contact section.</p>
+    <h2>Placing Order Section</h2>
+    <p class="lead">This is the order section.</p>
+  </div>
+</div>
+
+<div class="section founders">
+  <div class="container">
+    <div class="founders-heading">
+      <h2>Meet Our Founders</h2>
+    </div>
+    <div class="founders-images">
+      <img src="siyaya.jpg" class="img-fluid" alt="Founder 1">
+      <img src="xulu.jpg" class="img-fluid" alt="Founder 2">
+    </div>
   </div>
 </div>
 
@@ -204,16 +258,14 @@
           <li><a href="#"><strong><i class="fas fa-phone">&nbsp;&nbsp;Phone</i></strong></a></li>
           <li><a href="#"><strong><i class="fas fa-envelope">&nbsp;&nbsp;Email</i></strong></a></li>
           <li><a href="#"><strong><i class="fab fa-facebook">&nbsp;&nbsp;Facebook</i></strong></a></li>
-		  <li><a href="#"><strong><i class="fab fa-whatsapp">&nbsp;&nbsp;Whatsapp</i></strong></a></li>
+          <li><a href="#"><strong><i class="fab fa-whatsapp">&nbsp;&nbsp;Whatsapp</i></strong></a></li>
           <li><strong><i class="fas fa-map-marker-alt">&nbsp;&nbsp;Location</i></strong></li>
         </ul>
-		<p><a href="#">Kwa-Mdokwane Area, Pongola, KZN, 3170</a></p>
+        <p><a href="#">Kwa-Mdokwane Area, Pongola, KZN, 3170</a></p>
       </div>
     </div>
   </div>
 </footer>
-
-
 
 <!-- Bootstrap JS and jQuery CDN links (required for Bootstrap components) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
