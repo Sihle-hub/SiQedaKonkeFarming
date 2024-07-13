@@ -180,6 +180,46 @@
 		text-align: left;
         font-weight: 500;
 	}
+	
+	/* Adjustments for advertising section */
+	#advertising {
+	  background-color: #f8f9fa; /* Light background color */
+	  padding: 40px 0; /* Padding top and bottom */
+	}
+	
+	.advertising-category {
+	  background-color: #ffffff; /* White background */
+	  padding: 20px;
+	  margin-bottom: 20px; /* Space between categories */
+	  border: 1px solid #ddd; /* Border for category */
+	  border-radius: 8px; /* Rounded corners */
+	  text-align: center;
+	}
+	
+	.advertising-category h3 {
+	  margin-top: 0; /* Remove default margin */
+	}
+	
+	.image-list {
+	  max-height: 400px; /* Limit height of image list */
+	  overflow-x: auto; /* Enable horizontal scrolling */
+	  white-space: nowrap; /* Prevent images from wrapping */
+	  padding: 10px 0; /* Add padding for spacing */
+	}
+	
+	.image-list img {
+	  display: inline-block; /* Ensure images are inline */
+	  max-width: 100%; /* Ensure images are responsive */
+	  height: auto; /* Maintain aspect ratio */
+	  margin: 0 5px; /* Adjust spacing between images */
+	  border-radius: 8px; /* Rounded corners for images */
+	}
+
+
+    #scroll{
+		font-size: 20px;
+	}
+
 </style>
 </head>
 <body>
@@ -257,13 +297,37 @@
   </div>
 </div>
 
-
-
 <!-- Advertising Section -->
 <div id="advertising" class="section">
   <div class="container">
-    <h2>Advertising Section</h2>
-    <p class="lead">This is the Advertising section. You can place your advertising content or products here.</p>
+    <h2>Deals of the Week</h2>
+	<p id="scroll">(scroll left to view all deals)</p>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="advertising-category" id="liveChicken">
+          <h3>FarmFresh Chicken</h3>
+          <div class="image-list">
+            <!-- Images will be populated dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="advertising-category" id="mixPortions">
+          <h3>Meat Packs</h3>
+          <div class="image-list">
+            <!-- Images will be populated dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="advertising-category" id="feed">
+          <h3>Feed</h3>
+          <div class="image-list">
+            <!-- Images will be populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -411,6 +475,44 @@
 	    setInterval(zoomInOut, 3000); // Change image every 3 seconds
 		
 	  });
+	  
+	  document.addEventListener('DOMContentLoaded', function() {
+	    // Image URLs for each category
+	    const imageUrls = {
+	      liveChicken: [
+	        '7days.jpg',
+	        'dayold.jpg',
+	        'oldones.jpg'
+	      ],
+	      mixPortions: [
+	        'slaugh.jpg',
+	        'portion.jpg'
+	      ],
+	      feed: [
+	        'ffeed.jpg',
+	        'cfeed.jpg',
+	        'gfeed.jpg',
+	        'sfeed.jpg'
+	      ]
+	    };
+	  
+	    // Function to populate images for each category
+	    function populateImages(categoryId, imageUrls) {
+	      const imageList = document.querySelector(`#${categoryId} .image-list`);
+	      imageUrls.forEach(url => {
+	        const img = document.createElement('img');
+	        img.src = url;
+	        img.alt = 'Product Image';
+	        imageList.appendChild(img);
+	      });
+	    }
+	  
+	    // Populate images for each category
+	    populateImages('liveChicken', imageUrls.liveChicken);
+	    populateImages('mixPortions', imageUrls.mixPortions);
+	    populateImages('feed', imageUrls.feed);
+	  });
+
 	
 
 </script>
