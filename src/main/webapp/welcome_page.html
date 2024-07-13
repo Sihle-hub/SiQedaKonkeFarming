@@ -167,6 +167,7 @@
     }
 	.linklink{
 		text-align: left;
+        font-weight: 500;
 	}
 </style>
 </head>
@@ -237,14 +238,14 @@
         </ul>
       </div>
       <div class="col-md-6">
-        <!-- New div to be added inline -->
-        <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-          <img src="path/to/your/image.jpg" class="img-fluid" alt="Additional Service Image">
+        <div id="imageZoomContainer" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+          <img id="zoomedImage" src="" class="img-fluid" alt="Service Images">
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 
 <!-- Advertising Section -->
@@ -362,6 +363,45 @@
 
     // Run zoomOnScroll function when the DOM is fully loaded
     document.addEventListener('DOMContentLoaded', zoomOnScroll);
+
+	  document.addEventListener('DOMContentLoaded', function() {
+	    // Array of image URLs
+	    const imageUrls = [
+	      'eggs.png',
+	      'sevendays.jpg',
+	      'chicken.jpg',
+	      'feed.jpeg',
+	      'small.jpg'
+	    
+	    ];
+	
+	    const imageElement = document.getElementById('zoomedImage');
+	    let currentIndex = 0;
+	
+	    function zoomInOut() {
+	      // Zoom out
+	      imageElement.style.transform = 'scale(1.0)';
+	      setTimeout(() => {
+	        // Change image source
+	        imageElement.src = imageUrls[currentIndex];
+	        // Zoom in
+	        imageElement.style.transform = 'scale(1.1)';
+	      }, 300); // Adjust the delay as per your preference
+	
+	      // Move to the next image in the array
+	      currentIndex = (currentIndex + 1) % imageUrls.length;
+	    }
+	
+	    // Initial load of the first image
+	    imageElement.src = imageUrls[currentIndex];
+	    currentIndex++;
+	
+	    // Set interval to change images every 3 seconds (adjust as needed)
+	    setInterval(zoomInOut, 3000); // Change image every 3 seconds
+		
+	  });
+	
+
 </script>
 </body>
 </html>
