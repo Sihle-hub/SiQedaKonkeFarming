@@ -82,14 +82,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-/** ####################################3############################################################### */
   const selectedItemsList = document.getElementById('selected-items-list');
   const modalTotalPrice = document.getElementById('modal-total-price');
-    
-  let totalPrice = 0;
 
   document.getElementById('proceed-btn').addEventListener('click', function() {
-    selectedItemsList.innerHTML = '';
+    let totalPrice = 0; // Reset total price
+    selectedItemsList.innerHTML = ''; // Clear previous items
     modalTotalPrice.textContent = `R0.00`;
 
     document.querySelectorAll('.quantity-input').forEach(input => {
@@ -104,13 +102,13 @@ document.addEventListener('DOMContentLoaded', function() {
         totalPrice += price * quantity;
       }
     });
-    
-    
-    modalTotalPrice.textContent = `R${totalPrice.toFixed(2)}`;
 
+    modalTotalPrice.textContent = `R${totalPrice.toFixed(2)}`;
   });
-  
-  document.getElementById('order-btn').addEventListener('click', function() {   
+
+  document.getElementById('order-btn').addEventListener('click', function() {
+    const totalPrice = parseFloat(calculateTotalPrice());
+
     // Show the customer info modal if total price is greater than 0
     if (totalPrice > 0) {
       $('#selectedItemsModal').modal('hide'); // Hide the order summary modal
@@ -118,8 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       alert('Please select items to proceed.'); // Or handle this case as per your UI/UX design
     }
-    
-    });
+  });
 
   document.getElementById('confirmOrderBtn').addEventListener('click', function() {
     const cellNumber = document.getElementById('cellNumber').value;
