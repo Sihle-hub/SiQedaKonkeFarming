@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    /* Custom styles */
+    .category-section {
+      margin-bottom: 40px;
+    }
+
+    .category-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img-top {
+      max-width: 100%;
+      height: auto;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .card-body {
+      padding: 10px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .card-price {
+      font-size: 16px;
+      color: #666;
+    }
+
+    .quantity-input {
+      width: 50px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .item-label {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 5px;
+    }
+
+    .total-section {
+      margin-top: 20px;
+      text-align: right;
+      position: relative; /* Ensure relative positioning for absolute button */
+    }
+
+    .total-label {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .total-price {
+      font-size: 24px;
+      color: #27ae60;
+    }
+
+    .proceed-btn-container {
+      position: absolute;
+      bottom: -50px; /* Adjust this value based on your design */
+      right: 0;
+    }
+
+    @media (max-width: 576px) { /* Adjust for smaller screens if needed */
+      .proceed-btn-container {
+        position: static;
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <!-- FirmFarm Chicken Section -->
+    <div class="category-section">
+      <h2 class="category-title">FarmFresh Chicken</h2>
+      <div class="row" id="firmfarm-chicken">
+        <!-- Images will be dynamically inserted here -->
+      </div>
+    </div>
+
+    <!-- Meat Section -->
+    <div class="category-section">
+      <h2 class="category-title">Meat</h2>
+      <div class="row" id="meat">
+        <!-- Images will be dynamically inserted here -->
+      </div>
+    </div>
+
+    <!-- Feed Section -->
+    <div class="category-section">
+      <h2 class="category-title">Feed</h2>
+      <div class="row" id="feed">
+        <!-- Images will be dynamically inserted here -->
+      </div>
+    </div>
+
+    <!-- Total Section -->
+    <div class="total-section">
+      <span class="total-label">Total Price:</span>
+      <span class="total-price" id="total-price">R0.00</span>
+
+      <!-- Proceed Button Container -->
+      <div class="proceed-btn-container">
+        <button class="btn btn-primary mt-3" id="proceed-btn" data-toggle="modal" data-target="#selectedItemsModal">Proceed</button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="selectedItemsModal" tabindex="-1" role="dialog" aria-labelledby="selectedItemsModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="selectedItemsModalLabel">Order Summary</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul id="selected-items-list"></ul>
+            <p class="total-label">Total Price: <span id="modal-total-price">R0.00</span></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="order-btn">Order</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const products = [
+        {
+          category: 'FirmFarm Chicken',
+          items: [
+            { name: '7 days chicks(pack)', image: '7days.jpg', price: 1700.00 },
+            { name: 'One day chicks(pack)', image: 'dayold.jpg', price: 1500.00 },
+            { name: 'Live Chicken', image: 'oldones.jpg', price: 120.00 }
+          ]
+        },
+        {
+          category: 'Meat',
+          items: [
+            { name: 'slaughtered chickens', image: 'slaugh.jpg', price: 130.00},
+            { name: '2kg Mix Portion', image: 'portion.jpg', price: 150.00 }
+          ]
+        },
+        {
+          category: 'Feed',
+          items: [
+            { name: '50kg Starter feed', image: 'sfeed.jpg', price: 520.00 },
+            { name: 'Grower feed', image: 'gfeed.jpg', price: 500.00 },
+            { name: 'Feed combo', image: 'ffeed.jpg', price: 2000.00},
+            { name: 'Chicks+Feed(pack)', image: 'cfeed.jpg', price: 1900.00 }
+          ]
+        }
+        // Add more categories and items as needed
+      ];
+
+      function generateCategoryHTML(category, items) {
+        let categoryHTML = '';
+        items.forEach(item => {
+          categoryHTML += `
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card">
+                <img src="${item.image}" class="card-img-top" alt="${item.name}">
+                <div class="card-body">
+                  <h5 class="card-title">${item.name}</h5>
+                  <p class="card-price">R${item.price.toFixed(2)}</p>
+                  <label for="quantity-${item.name}" class="item-label">Quantity:</label>
+                  <input type="number" id="quantity-${item.name}" class="form-control quantity-input" value="0" min="0" data-price="${item.price}">
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        return categoryHTML;
+      }
+
+      function calculateTotalPrice() {
+        let totalPrice = 0;
+        document.querySelectorAll('.quantity-input').forEach(input => {
+          const price = parseFloat(input.dataset.price);
+          const quantity = parseInt(input.value);
+          totalPrice += price * quantity;
+        });
+        return totalPrice.toFixed(2);
+      }
+
+      function updateTotalPrice() {
+        const totalPrice = calculateTotalPrice();
+        document.getElementById('total-price').textContent = `R${totalPrice}`;
+      }
+
+      const firmFarmChickenDiv = document.getElementById('firmfarm-chicken');
+      const meatDiv = document.getElementById('meat');
+      const feedDiv = document.getElementById('feed');
+
+      products.forEach(product => {
+        if (product.category === 'FirmFarm Chicken') {
+          firmFarmChickenDiv.innerHTML = generateCategoryHTML(product.category, product.items);
+        } else if (product.category === 'Meat') {
+          meatDiv.innerHTML = generateCategoryHTML(product.category, product.items);
+        } else if (product.category === 'Feed') {
+          feedDiv.innerHTML = generateCategoryHTML(product.category, product.items);
+        }
+      });
+
+      document.querySelectorAll('.quantity-input').forEach(input => {
+        input.addEventListener('change', function() {
+          updateTotalPrice();
+        });
+      });
+
+      const selectedItemsList = document.getElementById('selected-items-list');
+      const modalTotalPrice = document.getElementById('modal-total-price');
+
+      document.getElementById('proceed-btn').addEventListener('click', function() {
+        // Clear previous list and total price
+        selectedItemsList.innerHTML = '';
+        modalTotalPrice.textContent = `R0.00`;
+
+        let totalPrice = 0;
+
+        // Iterate through inputs to find selected items
+        document.querySelectorAll('.quantity-input').forEach(input => {
+          const quantity = parseInt(input.value);
+          if (quantity > 0) {
+            const itemName = input.id.replace('quantity-', '');
+            const listItem = document.createElement('li');
+            listItem.textContent = `${itemName} * ${quantity}`;
+            selectedItemsList.appendChild(listItem);
+
+            // Calculate total price for selected items
+            const price = parseFloat(input.dataset.price);
+            totalPrice += price * quantity;
+          }
+        });
+
+        // Update modal total price
+        modalTotalPrice.textContent = `R${totalPrice.toFixed(2)}`;
+      });
+
+      document.getElementById('order-btn').addEventListener('click', function() {
+        const selectedItems = [];
+
+        // Collect selected items
+        document.querySelectorAll('.quantity-input').forEach(input => {
+          const quantity = parseInt(input.value);
+          if (quantity > 0) {
+            const itemName = input.id.replace('quantity-', '');
+            selectedItems.push({ name: itemName, quantity: quantity });
+          }
+        });
+
+        // Get total price
+        const totalPrice = parseFloat(calculateTotalPrice());
+
+        // Send selected items and total price to Spring Boot controller
+        fetch('/order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ items: selectedItems, totalPrice: totalPrice })
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Order successfully placed:', data);
+          // Optionally, you can redirect or show a success message here
+        })
+        .catch(error => {
+          console.error('Error during order:', error);
+          // Handle error scenarios here
+        });
+      });
+    });
+  </script>
+</body>
+</html>

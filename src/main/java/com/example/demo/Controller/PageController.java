@@ -11,6 +11,9 @@ public class PageController {
 		return "welcome_page.html";
 	}
 	
-	
+	@GetMapping("/menu")
+	public String menuPage() {
+		return "menu.html";
+	}
 
 }

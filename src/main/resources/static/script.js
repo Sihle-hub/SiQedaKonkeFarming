@@ -1,64 +1,64 @@
- var typed = new Typed(".multiple-text" ,{
-        strings: ["SiQeda Konke Farming"],
-        typeSpeed:100,
-        backSpeed:100,
-        backDelay:1000,
-        loop: true
-    })
-
-    // JavaScript for zoom effect on scroll
-    function zoomOnScroll() {
-        // Get all sections that should zoom
-        const zoomSections = document.querySelectorAll('.services, .contact');
-
-        // Function to check if an element is in viewport
-        function isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
-
-        // Function to zoom text
-        function zoomText(element) {
-            element.style.transition = "all 0.5s ease";
-            element.style.transform = "scale(1.1)";
-        }
-
-        // Function to reset text zoom
-        function resetZoomText(element) {
-            element.style.transition = "all 0.5s ease";
-            element.style.transform = "scale(1)";
-        }
-
-        // Check on scroll
-        window.addEventListener('scroll', function() {
-            zoomSections.forEach(section => {
-                if (isInViewport(section)) {
-                    zoomText(section.querySelector('h2'));
-                    zoomText(section.querySelector('p'));
-                } else {
-                    resetZoomText(section.querySelector('h2'));
-                    resetZoomText(section.querySelector('p'));
-                }
-            });
-        });
-
-        // Initial check in case elements are in viewport on page load
-        zoomSections.forEach(section => {
-            if (isInViewport(section)) {
-                zoomText(section.querySelector('h2'));
-                zoomText(section.querySelector('p'));
-            }
-        });
-    }
-
-    // Run zoomOnScroll function when the DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', zoomOnScroll);
-
+	var typed = new Typed(".multiple-text" ,{
+	       strings: ["SiQeda Konke Farming"],
+	       typeSpeed:100,
+	       backSpeed:100,
+	       backDelay:1000,
+	       loop: true
+	   })
+	
+	   // JavaScript for zoom effect on scroll
+	   function zoomOnScroll() {
+	       // Get all sections that should zoom
+	       const zoomSections = document.querySelectorAll('.services, .contact');
+	
+	       // Function to check if an element is in viewport
+	       function isInViewport(element) {
+	           const rect = element.getBoundingClientRect();
+	           return (
+	               rect.top >= 0 &&
+	               rect.left >= 0 &&
+	               rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+	               rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+	           );
+	       }
+	
+	       // Function to zoom text
+	       function zoomText(element) {
+	           element.style.transition = "all 0.5s ease";
+	           element.style.transform = "scale(1.1)";
+	       }
+	
+	       // Function to reset text zoom
+	       function resetZoomText(element) {
+	           element.style.transition = "all 0.5s ease";
+	           element.style.transform = "scale(1)";
+	       }
+	
+	       // Check on scroll
+	       window.addEventListener('scroll', function() {
+	           zoomSections.forEach(section => {
+	               if (isInViewport(section)) {
+	                   zoomText(section.querySelector('h2'));
+	                   zoomText(section.querySelector('p'));
+	               } else {
+	                   resetZoomText(section.querySelector('h2'));
+	                   resetZoomText(section.querySelector('p'));
+	               }
+	           });
+	       });
+	
+	       // Initial check in case elements are in viewport on page load
+	       zoomSections.forEach(section => {
+	           if (isInViewport(section)) {
+	               zoomText(section.querySelector('h2'));
+	               zoomText(section.querySelector('p'));
+	           }
+	       });
+	   }
+	
+	   // Run zoomOnScroll function when the DOM is fully loaded
+	   document.addEventListener('DOMContentLoaded', zoomOnScroll);
+	
 	  document.addEventListener('DOMContentLoaded', function() {
 	    // Array of image URLs
 	    const imageUrls = [
@@ -132,5 +132,5 @@
 	    populateImages('mixPortions', imageUrls.mixPortions);
 	    populateImages('feed', imageUrls.feed);
 	  });
-
+	
 	
