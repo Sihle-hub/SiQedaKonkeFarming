@@ -1,0 +1,209 @@
+  /* Basic CSS for navigation bar */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .navbar {
+        background-color: #333;
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Ensure it's above other content */
+    }
+    .navbar .logo {
+        color: white; /* Text color */
+        font-size: 20px; /* Font size */
+        font-weight: bold; /* Font weight */
+    }
+    .navbar .links {
+        display: flex; /* Use flexbox for links */
+    }
+    .navbar .links a {
+        color: white;
+        text-decoration: none;
+        padding: 14px 20px;
+        display: inline-block;
+    }
+    .navbar .links a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    /* Sections */
+    .section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        text-align: center; /* Center text content */
+        min-height: 80vh; /* Ensure sections take up at least full viewport height */
+    }
+    .home {
+        background-color: #fff; /* White background */
+        padding-top: 0px; /* Adjusted padding for all screens */
+    }
+    .services {
+        background-color: #e0e0e0;
+        padding: 40px 0; /* Added padding to create space */
+    }
+    .contact {
+        background-color: #d0d0d0;
+    }
+    .home-content {
+        max-width: 800px; /* Max width for content */
+        margin: 0 auto; /* Center content horizontally */
+        padding: 20px; /* Add padding to the content */
+    }
+    .home-content img {
+        max-width: 100%; /* Make sure image is responsive */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 300px; /* Limit max height */
+        margin-bottom: 20px; /* Space between image and heading */
+    }
+
+    /* Media query for smaller screens */
+    @media (max-width: 768px) {
+        .section {
+            min-height: 90vh; /* Adjusted min-height for smaller screens */
+        }
+        .home-content {
+            padding: 10px; /* Adjusted padding for smaller screens */
+        }
+        .services .row {
+            flex-direction: column; /* Stack columns vertically on smaller screens */
+        }
+        .services .col-md-6 {
+            margin-bottom: 30px; /* Space between columns */
+        }
+        .services .col-md-6:last-child {
+            margin-bottom: 0; /* Remove margin from last column */
+        }
+        .linklink {
+            padding-left: 20px; /* Add left padding for list items */
+        }
+    }
+
+    /* Styling for typed text */
+    .multiple-text {
+        color: white; /* Text color */
+        font-size: 24px; /* Font size */
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    
+    footer h4 {
+      margin-bottom: 20px;
+    }
+    
+    footer ul {
+      padding-left: 0;
+      list-style: none;
+    }
+    
+    footer ul li {
+      margin-bottom: 10px;
+    }
+    
+    footer ul li strong {
+      display: inline-block;
+      width: 100px; /* Adjust width as needed */
+    }
+    
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    /* Center links and space them */
+    @media (min-width: 768px) {
+      footer ul li {
+        display: inline-block;
+        margin-right: 20px; /* Adjust spacing between links */
+      }
+    }
+
+    /* Founders section */
+    .founders {
+      background-color: #f0f0f0; /* Light gray background */
+      padding: 40px 0;
+    }
+
+    .founders-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .founders-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap; /* Ensure images wrap to new line on smaller screens */
+    }
+
+    .founders-images img {
+      max-width: 100%; /* Ensure images are responsive */
+      height: auto;
+      max-height: 300px; /* Limit max height */
+      margin: 0 20px; /* Adjust spacing between images */
+      margin-bottom: 20px; /* Space between images on small screens */
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .founders-images {
+        flex-direction: column; /* Stack images vertically on smaller screens */
+        align-items: center; /* Center align images */
+      }
+
+      .founders-images img {
+        margin: 20px 0; /* Adjust spacing between images */
+      }
+    }
+	.linklink{
+		text-align: left;
+        font-weight: 500;
+	}
+	
+	/* Adjustments for advertising section */
+	#advertising {
+	  background-color: #f8f9fa; /* Light background color */
+	  padding: 40px 0; /* Padding top and bottom */
+	}
+	
+	.advertising-category {
+	  background-color: #ffffff; /* White background */
+	  padding: 20px;
+	  margin-bottom: 20px; /* Space between categories */
+	  border: 1px solid #ddd; /* Border for category */
+	  border-radius: 8px; /* Rounded corners */
+	  text-align: center;
+	}
+	
+	.advertising-category h3 {
+	  margin-top: 0; /* Remove default margin */
+	}
+	
+	.image-list {
+	  max-height: 400px; /* Limit height of image list */
+	  overflow-x: auto; /* Enable horizontal scrolling */
+	  white-space: nowrap; /* Prevent images from wrapping */
+	  padding: 10px 0; /* Add padding for spacing */
+	}
+	
+	.image-list img {
+	  display: inline-block; /* Ensure images are inline */
+	  max-width: 100%; /* Ensure images are responsive */
+	  height: auto; /* Maintain aspect ratio */
+	  margin: 0 5px; /* Adjust spacing between images */
+	  border-radius: 8px; /* Rounded corners for images */
+	}
+
+
+    #scroll{
+		font-size: 20px;
+	}
