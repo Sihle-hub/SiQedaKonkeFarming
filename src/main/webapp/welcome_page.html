@@ -55,6 +55,7 @@
     }
     .services {
         background-color: #e0e0e0;
+        padding: 40px 0; /* Added padding to create space */
     }
     .contact {
         background-color: #d0d0d0;
@@ -69,7 +70,6 @@
         height: auto; /* Maintain aspect ratio */
         max-height: 300px; /* Limit max height */
         margin-bottom: 20px; /* Space between image and heading */
-		
     }
 
     /* Media query for smaller screens */
@@ -79,6 +79,18 @@
         }
         .home-content {
             padding: 10px; /* Adjusted padding for smaller screens */
+        }
+        .services .row {
+            flex-direction: column; /* Stack columns vertically on smaller screens */
+        }
+        .services .col-md-6 {
+            margin-bottom: 30px; /* Space between columns */
+        }
+        .services .col-md-6:last-child {
+            margin-bottom: 0; /* Remove margin from last column */
+        }
+        .linklink {
+            padding-left: 20px; /* Add left padding for list items */
         }
     }
 
@@ -151,8 +163,7 @@
       max-height: 300px; /* Limit max height */
       margin: 0 20px; /* Adjust spacing between images */
       margin-bottom: 20px; /* Space between images on small screens */
-	  border-radius: 10px;
-	 
+      border-radius: 10px;
     }
 
     @media (max-width: 768px) {
