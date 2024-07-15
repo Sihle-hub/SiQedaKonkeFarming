@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			.then(data => {
 			console.log('Response data:', data);
 		
-			window.location.href = '/customer_details.html'; 
+			/*window.location.href = '/customer_details.html'; */
 			
 			})
 			.catch(error => {
