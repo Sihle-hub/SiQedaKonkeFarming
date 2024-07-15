@@ -22,12 +22,12 @@ public class PageController {
 	}
 	
 	 @PostMapping("/order")
-	    public String placeOrder(@RequestBody Map<String,Object> request) {
+	    public void placeOrder(@RequestBody Map<String,Object> request) {
 	       
 		 List<Map<String, Object>> items = (List<Map<String, Object>>) request.get("items");
 
 		  for (Map<String, Object> item : items) {
-		    String itemName = (String) item.get("name");
+		    String itemName = (String) item.get("itemName");
 		    Integer quantity = (Integer) item.get("quantity");
 
 		    // Do something with itemName and quantity
@@ -44,9 +44,6 @@ public class PageController {
 		   System.out.println(cellNumber);
 		   System.out.println(totalPrice);
 		   System.out.println(address);
-		   
-
-		   return "redirect:/customer_details.html";
 		   
 		      
 	    }
