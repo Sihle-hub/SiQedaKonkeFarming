@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	    const totalPrice = parseFloat(calculateTotalPrice());
 	
 	    // Send selected items, total price, cell number, and address to server
-	  /*  fetch('/order', {
+	    fetch('/order', {
 	      method: 'POST',
 	      headers: {
 	        'Content-Type': 'application/json'
@@ -171,14 +171,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	      alert('Order successfully placed!'); // Show success message or redirect
 	    })
 	    .catch(error => {
-	     // console.error('Error during order:', error);
-	     // alert(error); // Handle error scenarios
+	      console.error('Error during order:', error);
+	      alert('Error during order. Please try again.'); // Handle error scenarios
 	    });
 	
 	    // Reset modal inputs and close modal
 	    document.getElementById('cellNumber').value = '';
 	    document.getElementById('address').value = '';
-	    $('#customerInfoModal').modal('hide');*/
+	    $('#customerInfoModal').modal('hide');
 	  });
 	
 	});

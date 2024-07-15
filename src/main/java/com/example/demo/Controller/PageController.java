@@ -21,10 +21,10 @@ public class PageController {
 	}
 	
 	 @PostMapping("/order")
-	    public String placeOrder(@RequestBody Map<String,Object> items) {
+	    public String placeOrder(@RequestBody Map<String,Object> request) {
 	       
 	
-		     System.out.println(items);
+		     System.out.println(request);
 		 
 		      return "redirect:/customer_details.html";
 		      
