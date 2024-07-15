@@ -23,11 +23,11 @@ public class PageController {
 	 @PostMapping("/order")
 	    public String placeOrder(@RequestBody Map<String,Object> items) {
 	       
-		   System.out.println("im here");
-		   
+	
 		     System.out.println(items);
 		 
-		     return "redirect:/customer_details.html";
+		      return "redirect:/customer_details.html";
+		      
 	    }
 
 }
